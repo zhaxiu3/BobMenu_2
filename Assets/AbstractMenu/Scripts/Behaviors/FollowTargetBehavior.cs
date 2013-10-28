@@ -6,12 +6,8 @@ public class FollowTargetBehavior : ControlBehavior
     public Transform target;
     public Vector3 Offset;
 
-    protected override void calledWhenStart()
-    {
-        base.calledWhenStart();
-        this.behaviorType = BehaviorType.FollowTarget;
-    }
-    protected override void BeginBehavior()
+
+    public override void BeginBehavior()
     {
         base.BeginBehavior();
     }

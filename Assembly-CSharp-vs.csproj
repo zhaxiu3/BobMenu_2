@@ -46,10 +46,8 @@
   <ItemGroup>
      <Compile Include="Assets\AbstractMenu\Scripts\AbstractCursor.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\AbstractCursor2.cs" />
-     <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\ChildrenPositionMatrixBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\ChildrenScaleBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\ControlBehavior.cs" />
-     <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\DownBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\EnableCursorBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\FollowRotateTargetBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\FollowScaleTargetBehavior.cs" />
@@ -60,11 +58,11 @@
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\GotoNextBehaviorv2.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\HideChildrenBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\IgnoreEventBehavior.cs" />
+     <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\MoveToBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\RotateBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\ScaleBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\SetParentBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\ShowChildrenBehavior.cs" />
-     <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\UpBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Client\RotateByCursor.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Controls\Control.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Controlsv2\Control2.cs" />

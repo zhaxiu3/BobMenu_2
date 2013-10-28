@@ -9,13 +9,10 @@ public class RotateBehavior : ControlBehavior
     public Vector3 DifferEular = new Vector3(1,1,1);
     public Vector3 TargetEuler;
     public float speed = 0.5f;
-    protected override void calledWhenStart()
+
+    public override void BeginBehavior()
     {
-        base.calledWhenStart();
-        this.behaviorType = BehaviorType.Rotate;
-    }
-    protected override void BeginBehavior()
-    {
+        base.BeginBehavior();
         if (null != this.ControlTransform)
         {
             if (rotateby)

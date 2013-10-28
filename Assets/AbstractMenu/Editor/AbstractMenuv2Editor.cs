@@ -32,4 +32,16 @@ public class AbstractMenuv2Editor : Editor
             }
         }
     }
+
+    [MenuItem("AbstractMenuv2/CircleLocation")]
+    public static void CircleLocation()
+    {
+        GameObject selectedObject = Selection.activeGameObject;
+        Control2 _control = selectedObject.GetComponent<Control2>();
+        for (int i = 0; i < _control.Trans.Count; i++ )
+        {
+            _control.Trans[i].localPosition = Quaternion.Euler(0, 360.0f / (float)_control.Trans.Count*i, 0)*Vector3.forward*4.0f;
+            _control.Trans[i].localRotation = Quaternion.Euler(0, 360.0f / (float)_control.Trans.Count*i - 180, 0);
+        }
+    }
 }

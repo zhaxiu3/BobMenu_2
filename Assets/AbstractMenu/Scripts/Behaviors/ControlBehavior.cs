@@ -15,15 +15,14 @@ public enum BehaviorType
     HideChildren,
     GotoNext,
     GoBack,
-    ChildrenPosition,
+    MoveTo,
     FollowRotateTarget, 
     FollowScaleTarget,
     ChildrenScale,
     FollowTarget,
     Rotate,
-    ChangeParent
-
-
+    SetParent,
+    IgnoreEvent
 }
 
 public class ControlBehavior : MonoBehaviour {
@@ -34,10 +33,9 @@ public class ControlBehavior : MonoBehaviour {
     public float delay = 0;
     public float timer = 0;
 
-    void Start() {
-        calledWhenStart();
-    }
-    protected virtual void calledWhenStart() {
+
+    void Awake()
+    {
         this.ControlTransform = this.transform.parent;
     }
 	// Update is called once per frame
@@ -53,11 +51,15 @@ public class ControlBehavior : MonoBehaviour {
         }
 	}
 
-    protected virtual void BeginBehavior() { 
+    public virtual void BeginBehavior() {
+        this.enabled = true;
+        this.ControlTransform.GetComponent<Control2>().avticeBehaviorList.Add(this);
     }
     protected virtual void UpdateBehavior() { 
     }
-    protected virtual void EndBehavior() {
+    public virtual void EndBehavior()
+    {
+        this.ControlTransform.GetComponent<Control2>().avticeBehaviorList.Remove(this);
         ControlTransform.GetComponent<Control2>().OnBehaviorFinished(this, null);
         this.Finished = false;
         this.timer = 0;
@@ -75,11 +77,8 @@ public class ControlBehavior : MonoBehaviour {
         _obj.transform.parent = control.transform;
         switch (type)
         {
-            case BehaviorType.Up:
-                _controlbehavior = _obj.AddComponent<UpBehavior>();
-                break;
-            case BehaviorType.Down:
-                _controlbehavior = _obj.AddComponent<DownBehavior>();
+            case BehaviorType.FollowMouse:
+                //_controlbehavior = _obj.AddComponent<FollowMouseBehavior>();
                 break;
             case BehaviorType.Scale:
                 _controlbehavior = _obj.AddComponent<ScaleBehavior>();
@@ -96,10 +95,30 @@ public class ControlBehavior : MonoBehaviour {
             case BehaviorType.GoBack:
                 _controlbehavior = _obj.AddComponent<GobackBehaviorv2>();
                 break;
-            case BehaviorType.ChildrenPosition:
-                _controlbehavior = _obj.AddComponent<ChildrenPositionMatrixBehavior>();
+            case BehaviorType.MoveTo:
+                _controlbehavior = _obj.AddComponent<MoveToBehavior>();
                 break;
-
+            case BehaviorType.FollowRotateTarget:
+                _controlbehavior = _obj.AddComponent<FollowRotateTargetBehavior>();
+                break;
+            case BehaviorType.FollowScaleTarget:
+                _controlbehavior = _obj.AddComponent<FollowScaleTargetBehavior>();
+                break;
+            case BehaviorType.ChildrenScale:
+                _controlbehavior = _obj.AddComponent<ChildrenScaleBehavior>();
+                break;
+            case BehaviorType.FollowTarget:
+                _controlbehavior = _obj.AddComponent<FollowTargetBehavior>();
+                break;
+            case BehaviorType.Rotate:
+                _controlbehavior = _obj.AddComponent<RotateBehavior>();
+                break;
+            case BehaviorType.SetParent:
+                _controlbehavior = _obj.AddComponent<SetParentBehavior>();
+                break;
+            case BehaviorType.IgnoreEvent:
+                _controlbehavior = _obj.AddComponent<IgnoreEventBehavior>();
+                break;
         }
 
         if (null == _controlbehavior) {
@@ -121,16 +140,6 @@ public class ControlBehavior : MonoBehaviour {
         _obj.transform.parent = control.transform;
         switch (type)
         { 
-            case BehaviorType.Up:      
-                _controlbehavior = _obj.AddComponent<UpBehavior>();
-                _controlbehavior.behaviorType = BehaviorType.Up;
-                _controlbehavior.enabled = false;
-                break;
-            case BehaviorType.Down:
-                _controlbehavior = _obj.AddComponent<DownBehavior>();
-                _controlbehavior.behaviorType = BehaviorType.Down;
-                _controlbehavior.enabled = false;
-                break;
             case BehaviorType.Scale:
                 _controlbehavior = _obj.AddComponent<ScaleBehavior>();
                 _controlbehavior.behaviorType = BehaviorType.Scale;

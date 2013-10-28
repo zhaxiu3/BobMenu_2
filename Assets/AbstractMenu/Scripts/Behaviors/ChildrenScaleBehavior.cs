@@ -6,11 +6,7 @@ public class ChildrenScaleBehavior : ControlBehavior
 {
     public List<Control2> children;
     public Vector3 targetscale;
-    protected override void calledWhenStart()
-    {
-        base.calledWhenStart();
-        this.behaviorType = BehaviorType.ChildrenScale;
-    }
+
 
     protected override void UpdateBehavior()
     {

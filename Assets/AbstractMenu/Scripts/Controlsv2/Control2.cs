@@ -12,7 +12,8 @@ public class Control2 : MonoBehaviour
 
     private int numberOfChildren;
     public List<Control2> items;
-
+    public List<Transform> Trans;
+    public List<ControlBehavior> avticeBehaviorList;
     public bool Show;
 
     public event EventHandler<SelectorEventArgs> HoverEventHandler;
@@ -27,6 +28,9 @@ public class Control2 : MonoBehaviour
     public event EventHandler ClosedEventHandler;
 
     public event EventHandler BehaviorFinishedHandler;
+
+    public List<ControlEventType> IgnoredEventList;
+    public ControlEventType LastEvent;
 
     public bool hasChildren
     {
@@ -99,7 +103,8 @@ public class Control2 : MonoBehaviour
                     DestroyImmediate(_cb.gameObject);
                 }
             }
-            for (int j = 0; j < _elm.behaviortypeList.Count; j++) {
+            for (int j =0 ; j < _elm.behaviortypeList.Count; j++)
+            {
                 if (j >= _elm.behaviorList.Count) {
                     _elm.behaviorList.Add(ControlBehavior.AddControlBehavior(this, _elm.eventType,_elm.behaviortypeList[j]));
                 }
@@ -127,7 +132,7 @@ public class Control2 : MonoBehaviour
             EventHandlerContainer _elem = this.behaviorHandlerContainers[i];
             if (_eventType == _elem.eventType) {
                 for (int j = 0; j < _elem.behaviorList.Count; j++) {
-                    _elem.behaviorList[j].enabled = false;
+                    _elem.behaviorList[j].EndBehavior();
                 }
                 break;
             }
@@ -136,11 +141,20 @@ public class Control2 : MonoBehaviour
 
     private void setBehaviorForEventType(ControlEventType _eventType)
     {
+        if (this.IgnoredEventList.Contains(_eventType)) {
+            return;
+        }
+
+        if (this.LastEvent == _eventType) {
+            return;
+        }        
+        this.LastEvent = _eventType;
+
         for (int i = 0; i < this.behaviorHandlerContainers.Count; i++) {
             EventHandlerContainer _elem = this.behaviorHandlerContainers[i];
             if (_elem.eventType == _eventType) {
                 for (int j = 0; j < _elem.behaviorList.Count; j++) {
-                    _elem.behaviorList[j].enabled = true;
+                    _elem.behaviorList[j].BeginBehavior();
                 }
                 for (int j = 0; j < _elem.ExclusiveEventtypeList.Count; j++) {
                     this.DisableExclusiveEvent(_elem.ExclusiveEventtypeList[j]);
@@ -177,7 +191,7 @@ public class Control2 : MonoBehaviour
 
     public void OnHover(object sender, SelectorEventArgs args)
     {
-        //Debug.Log(this.name+ "OnHover");
+        Debug.Log(this.name+ "OnHover");
         ControlEventType _eventType = ControlEventType.Hover;
         setBehaviorForEventType(_eventType);
         if (null != this.HoverEventHandler)
@@ -298,6 +312,6 @@ public class Control2 : MonoBehaviour
 
     public void IgnoreEvent(List<ControlEventType> list)
     {
-
+        this.IgnoredEventList = list;
     }
 }

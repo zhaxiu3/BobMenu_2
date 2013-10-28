@@ -5,12 +5,8 @@ public class FollowScaleTargetBehavior : ControlBehavior
 {
     public Transform target;
 
-    protected override void calledWhenStart()
-    {
-        base.calledWhenStart();
-        this.behaviorType = BehaviorType.FollowScaleTarget;
-    }
-    protected override void BeginBehavior()
+
+    public override void BeginBehavior()
     {
         base.BeginBehavior();
     }

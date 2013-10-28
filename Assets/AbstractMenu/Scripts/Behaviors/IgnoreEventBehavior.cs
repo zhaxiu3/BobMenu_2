@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class IgnoreEventBehavior : ControlBehavior
 {
     public List<ControlEventType> ignoredlist;
-    protected override void BeginBehavior()
+    public override void BeginBehavior()
     {
         base.BeginBehavior();
         this.ControlTransform.GetComponent<Control2>().IgnoreEvent(this.ignoredlist);
