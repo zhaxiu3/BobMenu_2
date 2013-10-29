@@ -9,7 +9,7 @@ public class GotoNextBehaviorv2 : ControlBehavior {
     protected override void UpdateBehavior()
     {
         base.UpdateBehavior();
-        this.ControlTransform.parent.GetComponent<Control2>().OnClose(this, null);
+        this.ControlTransform.parent.parent.GetComponent<Control2>().OnClose(this, null);
         nextControl.OnLoad(this, null); 
         this.EndBehavior();
     }

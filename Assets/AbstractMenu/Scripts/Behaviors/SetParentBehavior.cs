@@ -5,10 +5,12 @@ public class SetParentBehavior : ControlBehavior
 {
     public Transform target;
 
-    protected override void UpdateBehavior()
+    public override void BeginBehavior()
     {
+        base.BeginBehavior();
         this.ControlTransform.parent = this.target;
         this.EndBehavior();
-    }    
+
+    }  
 
 }

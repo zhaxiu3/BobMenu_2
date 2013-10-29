@@ -25,7 +25,8 @@ public enum ControlEventType
     Close,
     Closing,
     Closed,
-    MouseMove
+    MouseMove,
+    None
 }
 
 [Serializable]

@@ -166,6 +166,7 @@ public class Control2 : MonoBehaviour
 
     public void OnLoad(object sender, EventArgs args)
     {
+        this.ShowChildren(true);
         setBehaviorForEventType(ControlEventType.Load);
         if (null != this.LoadEventHandler)
         {
@@ -278,6 +279,7 @@ public class Control2 : MonoBehaviour
 
     public void ShowChildren(bool toshow)
     {
+        this.Show = toshow;
         if (toshow)
         {
             for (int i = 0; i < items.Count; i++)
@@ -312,6 +314,18 @@ public class Control2 : MonoBehaviour
 
     public void IgnoreEvent(List<ControlEventType> list)
     {
-        this.IgnoredEventList = list;
+        foreach (ControlEventType elm in list)
+        {
+            if (this.IgnoredEventList.Contains(elm))
+                continue;
+            this.IgnoredEventList.Add(elm);
+        }
+    }
+    public void removeIgnoreEvent(List<ControlEventType> list)
+    {
+        foreach (ControlEventType elm in list)
+        {
+            this.IgnoredEventList.Remove(elm);
+        }
     }
 }

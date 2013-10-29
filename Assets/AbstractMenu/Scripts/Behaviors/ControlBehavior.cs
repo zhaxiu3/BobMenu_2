@@ -22,7 +22,8 @@ public enum BehaviorType
     FollowTarget,
     Rotate,
     SetParent,
-    IgnoreEvent
+    IgnoreEvent,
+    RemoveIgnoreEvent
 }
 
 public class ControlBehavior : MonoBehaviour {
@@ -52,6 +53,8 @@ public class ControlBehavior : MonoBehaviour {
 	}
 
     public virtual void BeginBehavior() {
+        if (this.ControlTransform.GetComponent<Control2>().avticeBehaviorList.Contains(this))
+            return;
         this.enabled = true;
         this.ControlTransform.GetComponent<Control2>().avticeBehaviorList.Add(this);
     }
@@ -118,6 +121,9 @@ public class ControlBehavior : MonoBehaviour {
                 break;
             case BehaviorType.IgnoreEvent:
                 _controlbehavior = _obj.AddComponent<IgnoreEventBehavior>();
+                break;
+            case BehaviorType.RemoveIgnoreEvent:
+                _controlbehavior = _obj.AddComponent<RemoveIgnoreEventBehavior>();
                 break;
         }
 

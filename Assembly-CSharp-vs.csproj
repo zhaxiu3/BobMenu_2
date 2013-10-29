@@ -59,6 +59,7 @@
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\HideChildrenBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\IgnoreEventBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\MoveToBehavior.cs" />
+     <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\RemoveIgnoreEventBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\RotateBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\ScaleBehavior.cs" />
      <Compile Include="Assets\AbstractMenu\Scripts\Behaviors\SetParentBehavior.cs" />
@@ -89,6 +90,15 @@
      <Compile Include="Assets\iTweenEditor\Helper Classes\Vector3OrTransformArray.cs" />
      <Compile Include="Assets\iTweenEditor\iTweenEvent.cs" />
      <Compile Include="Assets\iTweenEditor\iTweenPath.cs" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\UpdateLog.txt" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{130B082B-B6B8-19F6-FCF7-28701392E77D}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

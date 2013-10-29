@@ -1,0 +1,3 @@
+.LOG
+10:02 2013/10/29
+Todo:There should be state management in control 

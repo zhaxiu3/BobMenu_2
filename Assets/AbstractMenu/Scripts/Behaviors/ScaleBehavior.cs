@@ -8,7 +8,7 @@ public class ScaleBehavior : ControlBehavior
 
     protected override void UpdateBehavior()
     {
-        this.ControlTransform.localScale = Vector3.Lerp(this.transform.parent.localScale, DstScalor, .5f);
+        this.ControlTransform.localScale = Vector3.Lerp(this.ControlTransform.localScale, DstScalor, 0.1f);
         if (Vector3.Distance(this.ControlTransform.localScale, DstScalor) < 0.02f)
         {
             this.EndBehavior();

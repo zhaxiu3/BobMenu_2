@@ -49,6 +49,8 @@
      <Compile Include="Assets\UVEditor\Editor\UVEditor.cs" />
      <Compile Include="Assets\iTweenEditor\Editor\iTweenEventDataEditor.cs" />
      <Compile Include="Assets\iTweenEditor\Editor\iTweenPathEditor.cs" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\UpdateLog.txt" />
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -69,6 +71,10 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{130B082B-B6B8-19F6-FCF7-28701392E77D}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{EF80223E-5543-E177-07AB-159F075E88D4}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{8298A6C7-E662-AF86-EF36-635D3069BB42}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
